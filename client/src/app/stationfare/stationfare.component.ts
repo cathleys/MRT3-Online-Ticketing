@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { StationFareService } from '../api/services';
+import { StationFare } from '../api/models';
 
 @Component({
   selector: 'app-stationfare',
@@ -7,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stationfare.component.css'],
 })
 export class StationfareComponent implements OnInit {
-  fares: any;
-  constructor(private http: HttpClient) {}
+  fares: StationFare[] = [];
+  constructor(private stationFareService: StationFareService) {}
 
-  ngOnInit(): void {
-    this.http.get('http://localhost:5233/api/stationfare').subscribe({
-      next: (r) => (this.fares = r),
+  ngOnInit(): void {}
+
+  search() {
+    this.stationFareService.apiStationFareGet().subscribe({
+      next: (response) => (this.fares = response),
+      error: (err) => console.log(err),
     });
   }
 }
