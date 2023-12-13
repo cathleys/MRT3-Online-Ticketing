@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { StationFareService } from '../api/services';
 import { StationFare } from '../api/models';
@@ -15,7 +14,7 @@ export class StationfareComponent implements OnInit {
   ngOnInit(): void {}
 
   search() {
-    this.stationFareService.apiStationFareGet().subscribe({
+    this.stationFareService.searchStationFare().subscribe({
       next: (response) => (this.fares = response),
       error: (err) => console.log(err),
     });
