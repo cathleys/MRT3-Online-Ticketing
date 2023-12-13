@@ -8,16 +8,16 @@ import { RequestBuilder } from '../../request-builder';
 
 import { StationFare } from '../../models/station-fare';
 
-export interface ApiStationFareGet$Params {
+export interface SearchStationFare$Plain$Params {
 }
 
-export function apiStationFareGet(http: HttpClient, rootUrl: string, params?: ApiStationFareGet$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<StationFare>>> {
-  const rb = new RequestBuilder(rootUrl, apiStationFareGet.PATH, 'get');
+export function searchStationFare$Plain(http: HttpClient, rootUrl: string, params?: SearchStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<StationFare>>> {
+  const rb = new RequestBuilder(rootUrl, searchStationFare$Plain.PATH, 'get');
   if (params) {
   }
 
   return http.request(
-    rb.build({ responseType: 'json', accept: 'text/json', context })
+    rb.build({ responseType: 'text', accept: 'text/plain', context })
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
@@ -26,4 +26,4 @@ export function apiStationFareGet(http: HttpClient, rootUrl: string, params?: Ap
   );
 }
 
-apiStationFareGet.PATH = '/api/StationFare';
+searchStationFare$Plain.PATH = '/api/StationFare';

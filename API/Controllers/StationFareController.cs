@@ -10,7 +10,7 @@ public class StationFareController : ControllerBase
 {
 
     [HttpGet]
-    public ActionResult<IEnumerable<StationFare>> GetStationFares()
+    public ActionResult<IEnumerable<StationFare>> Search()
     {
         var fares = new List<StationFare>
         {

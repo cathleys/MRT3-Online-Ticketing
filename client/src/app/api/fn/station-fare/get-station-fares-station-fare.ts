@@ -7,12 +7,12 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface ApiStationFareIdGet$Params {
+export interface GetStationFaresStationFare$Params {
   id: number;
 }
 
-export function apiStationFareIdGet(http: HttpClient, rootUrl: string, params: ApiStationFareIdGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, apiStationFareIdGet.PATH, 'get');
+export function getStationFaresStationFare(http: HttpClient, rootUrl: string, params: GetStationFaresStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, getStationFaresStationFare.PATH, 'get');
   if (params) {
     rb.path('id', params.id, {});
   }
@@ -27,4 +27,4 @@ export function apiStationFareIdGet(http: HttpClient, rootUrl: string, params: A
   );
 }
 
-apiStationFareIdGet.PATH = '/api/StationFare/{id}';
+getStationFaresStationFare.PATH = '/api/StationFare/{id}';
