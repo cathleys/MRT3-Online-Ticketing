@@ -1,0 +1,54 @@
+<h3 class="text-center">Buy Ticket</h3>
+
+<div class="card text-dark mt-5 text-center">
+  <div class="card-body" style="padding: 20px; background-color: #e5ecf26e">
+    <h6 class="card-title">MRT 3</h6>
+    <div class="card-title" style="color: #ff3939">Single Journey Ticket</div>
+
+    <div class="d-grid text-center g-2">
+      <div class="row">
+        <div class="col">
+          <div class="col m-3">
+            <i class="fa-solid fa-plane-departure"></i>
+          </div>
+          <div class="col">
+            <i class="fa-solid fa-location-dot">
+              {{ stationFareTicket.from }}</i
+            >
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="d-flex">
+            <i
+              class="fa-solid fa-circle"
+              style="margin-top: 50px; font-size: 9px"
+            ></i>
+            <hr style="display: block; width: 100%; margin-top: 55px" />
+            <i class="fas fa-plane" style="margin-top: 48px"></i>
+          </div>
+          <i class="fa-solid fa-peso-sign">{{ stationFareTicket.price }}</i>
+
+          <br />
+          <a
+            routerLink="/buy-ticket/{{ stationFareTicket.id }}"
+            class="btn btn-secondary btn-lg mt-2"
+          >
+            <i class="fas fa-ticket"></i> Buy
+          </a>
+        </div>
+
+        <div class="col">
+          <div class="col m-3">
+            <i class="fa-solid fa-plane-arrival"></i>
+          </div>
+          <div class="col">
+            <i class="fa-solid fa-location-dot">
+              {{ stationFareTicket.destination }}</i
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
