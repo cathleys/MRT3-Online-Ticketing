@@ -3,6 +3,6 @@
 export interface StationFare {
   destination?: string | null;
   from?: string | null;
-  id?: number;
+  id?: string | null;
   price?: string | null;
 }

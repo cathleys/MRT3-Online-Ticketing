@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StationfareComponent } from './stationfare/stationfare.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 
 @NgModule({
-  declarations: [AppComponent, StationfareComponent],
+  declarations: [AppComponent, StationfareComponent, BuyTicketComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
