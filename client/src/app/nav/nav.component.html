@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">MRT3 Online Ticketing System</a>
+
+    <ul
+      class="navbar-nav me-auto mb-2 mb-md-0"
+      *ngIf="accountService.currentUser$ | async"
+    >
+      <li class="nav-item">
+        <a class="nav-link" href="/station-fare">Station Fare</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">My Tickets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logOut()">Logout</a>
+      </li>
+    </ul>
+
+    <form
+      *ngIf="!(accountService.currentUser$ | async)"
+      [formGroup]="loginForm"
+      class="d-flex"
+      autocomplete="off"
+    >
+      <input
+        formControlName="username"
+        name="username"
+        class="form-control me-2"
+        type="text"
+        placeholder="Username"
+      />
+      <input
+        formControlName="password"
+        name="password"
+        class="form-control me-2"
+        type="password"
+        placeholder="Password"
+      />
+      <button (click)="login()" class="btn btn-outline-success" type="submit">
+        Login
+      </button>
+    </form>
+  </div>
+</nav>
