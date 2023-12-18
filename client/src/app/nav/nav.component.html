@@ -2,7 +2,10 @@
   <div class="container">
     <a class="navbar-brand" href="/">MRT3 Online Ticketing System</a>
 
-    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <ul
+      class="navbar-nav me-auto mb-2 mb-md-0"
+      *ngIf="accountService.currentUser$ | async"
+    >
       <li class="nav-item">
         <a class="nav-link" href="/station-fare">Station Fare</a>
       </li>
@@ -13,11 +16,16 @@
         <a class="nav-link" href="/">My Tickets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/">Logout</a>
+        <a class="nav-link" (click)="logOut()">Logout</a>
       </li>
     </ul>
 
-    <form [formGroup]="loginForm" class="d-flex" autocomplete="off">
+    <form
+      *ngIf="!(accountService.currentUser$ | async)"
+      [formGroup]="loginForm"
+      class="d-flex"
+      autocomplete="off"
+    >
       <input
         formControlName="username"
         name="username"

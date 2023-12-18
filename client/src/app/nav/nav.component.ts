@@ -3,6 +3,7 @@ import { AccountService } from '../api/services';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserDto } from '../api/models';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +14,7 @@ export class NavComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
 
   constructor(
-    private accountService: AccountService,
+    public accountService: AccountService,
     private router: Router,
     private fb: FormBuilder
   ) {}
@@ -34,6 +35,7 @@ export class NavComponent implements OnInit {
       next: (user: UserDto) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
+          this.accountService.setCurrentUser(user);
           this.router.navigateByUrl('/station-fare');
         }
       },
@@ -41,9 +43,8 @@ export class NavComponent implements OnInit {
     });
   }
 
-  // logOut() {
-  // this.accountService.logOut();
-  //localStorage.removeItem('user');
-  //   this.router.navigateByUrl('/');
-  // }
+  logOut() {
+    this.accountService.logout();
+    this.router.navigateByUrl('/');
+  }
 }
