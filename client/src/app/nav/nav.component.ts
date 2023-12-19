@@ -3,7 +3,7 @@ import { AccountService } from '../api/services';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserDto } from '../api/models';
-import { Observable, of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -16,7 +16,8 @@ export class NavComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +40,7 @@ export class NavComponent implements OnInit {
           this.router.navigateByUrl('/station-fare');
         }
       },
-      error: (err) => console.log(err),
+      error: (err) => this.toastr.error(err.error),
     });
   }
 
