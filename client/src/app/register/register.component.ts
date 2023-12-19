@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../api/services';
 import { Router } from '@angular/router';
 import { UserDto } from '../api/models';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       error: (error) => {
+        this.toastr.error(error.error);
         console.log(error);
       },
     });
