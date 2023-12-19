@@ -10,6 +10,8 @@ import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { SharedModule } from './_modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { NavComponent } from './nav/nav.component';
     BuyTicketComponent,
     RegisterComponent,
     NavComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { NavComponent } from './nav/nav.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
