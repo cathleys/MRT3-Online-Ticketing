@@ -11,8 +11,10 @@ import { StrictHttpResponse } from '../strict-http-response';
 
 import { buyStationFare } from '../fn/station-fare/buy-station-fare';
 import { BuyStationFare$Params } from '../fn/station-fare/buy-station-fare';
-import { buyStationFare$Plain } from '../fn/station-fare/buy-station-fare-plain';
-import { BuyStationFare$Plain$Params } from '../fn/station-fare/buy-station-fare-plain';
+import { findStationFare } from '../fn/station-fare/find-station-fare';
+import { FindStationFare$Params } from '../fn/station-fare/find-station-fare';
+import { findStationFare$Plain } from '../fn/station-fare/find-station-fare-plain';
+import { FindStationFare$Plain$Params } from '../fn/station-fare/find-station-fare-plain';
 import { searchStationFare } from '../fn/station-fare/search-station-fare';
 import { SearchStationFare$Params } from '../fn/station-fare/search-station-fare';
 import { searchStationFare$Plain } from '../fn/station-fare/search-station-fare-plain';
@@ -72,38 +74,63 @@ export class StationFareService extends BaseService {
     );
   }
 
-  /** Path part for operation `buyStationFare()` */
-  static readonly BuyStationFarePath = '/api/StationFare/{id}';
+  /** Path part for operation `findStationFare()` */
+  static readonly FindStationFarePath = '/api/StationFare/{id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `buyStationFare$Plain()` instead.
+   * To access only the response body, use `findStationFare$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  buyStationFare$Plain$Response(params: BuyStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
-    return buyStationFare$Plain(this.http, this.rootUrl, params, context);
+  findStationFare$Plain$Response(params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
+    return findStationFare$Plain(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `buyStationFare$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `findStationFare$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  buyStationFare$Plain(params: BuyStationFare$Plain$Params, context?: HttpContext): Observable<StationFare> {
-    return this.buyStationFare$Plain$Response(params, context).pipe(
+  findStationFare$Plain(params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StationFare> {
+    return this.findStationFare$Plain$Response(params, context).pipe(
       map((r: StrictHttpResponse<StationFare>): StationFare => r.body)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `buyStationFare()` instead.
+   * To access only the response body, use `findStationFare()` instead.
    *
    * This method doesn't expect any request body.
    */
-  buyStationFare$Response(params: BuyStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
+  findStationFare$Response(params: FindStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
+    return findStationFare(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `findStationFare$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  findStationFare(params: FindStationFare$Params, context?: HttpContext): Observable<StationFare> {
+    return this.findStationFare$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StationFare>): StationFare => r.body)
+    );
+  }
+
+  /** Path part for operation `buyStationFare()` */
+  static readonly BuyStationFarePath = '/api/StationFare/buy-ticket';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `buyStationFare()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  buyStationFare$Response(params?: BuyStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
     return buyStationFare(this.http, this.rootUrl, params, context);
   }
 
@@ -111,11 +138,11 @@ export class StationFareService extends BaseService {
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `buyStationFare$Response()` instead.
    *
-   * This method doesn't expect any request body.
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  buyStationFare(params: BuyStationFare$Params, context?: HttpContext): Observable<StationFare> {
+  buyStationFare(params?: BuyStationFare$Params, context?: HttpContext): Observable<void> {
     return this.buyStationFare$Response(params, context).pipe(
-      map((r: StrictHttpResponse<StationFare>): StationFare => r.body)
+      map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
 

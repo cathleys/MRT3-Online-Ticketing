@@ -6,26 +6,26 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { StationFare } from '../../models/station-fare';
+import { StationFareTicketDto } from '../../models/station-fare-ticket-dto';
 
 export interface BuyStationFare$Params {
-  id: string;
+      body?: StationFareTicketDto
 }
 
-export function buyStationFare(http: HttpClient, rootUrl: string, params: BuyStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
-  const rb = new RequestBuilder(rootUrl, buyStationFare.PATH, 'get');
+export function buyStationFare(http: HttpClient, rootUrl: string, params?: BuyStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, buyStationFare.PATH, 'post');
   if (params) {
-    rb.path('id', params.id, {});
+    rb.body(params.body, 'application/*+json');
   }
 
   return http.request(
-    rb.build({ responseType: 'json', accept: 'text/json', context })
+    rb.build({ responseType: 'text', accept: '*/*', context })
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<StationFare>;
+      return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
     })
   );
 }
 
-buyStationFare.PATH = '/api/StationFare/{id}';
+buyStationFare.PATH = '/api/StationFare/buy-ticket';

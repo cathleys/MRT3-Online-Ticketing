@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../api/services';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserDto } from '../api/models';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../_helpers/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -14,7 +15,8 @@ export class NavComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
 
   constructor(
-    public accountService: AccountService,
+    private accountService: AccountService,
+    public userService: UserService,
     private router: Router,
     private fb: FormBuilder,
     private toastr: ToastrService
@@ -26,8 +28,8 @@ export class NavComponent implements OnInit {
 
   initializeForm() {
     this.loginForm = this.fb.group({
-      username: [''],
-      password: [''],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -36,7 +38,13 @@ export class NavComponent implements OnInit {
       next: (user: UserDto) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
-          this.accountService.setCurrentUser(user);
+          this.userService.setCurrentUser(user);
+          this.userService.loginUser(this.loginForm.get('username')?.value);
+          console.log(
+            'login value in nav:',
+            this.loginForm.get('username')?.value
+          );
+
           this.router.navigateByUrl('/station-fare');
         }
       },
@@ -45,7 +53,7 @@ export class NavComponent implements OnInit {
   }
 
   logOut() {
-    this.accountService.logout();
+    this.userService.logout();
     this.router.navigateByUrl('/');
   }
 }

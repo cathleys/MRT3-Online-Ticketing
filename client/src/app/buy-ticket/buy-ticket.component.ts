@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StationFareService } from '../api/services';
-import { StationFare } from '../api/models';
-
+import { StationFare, StationFareTicketDto, UserDto } from '../api/models';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../_helpers/user.service';
+import { map } from 'rxjs';
 @Component({
   selector: 'app-buy-ticket',
   templateUrl: './buy-ticket.component.html',
@@ -11,23 +13,47 @@ import { StationFare } from '../api/models';
 export class BuyTicketComponent implements OnInit {
   ticketId: string = 'not loaded';
   stationFareTicket: StationFare = {};
+  username: string | null | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private stationFareService: StationFareService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
+    this.user();
+
     this.route.paramMap.subscribe({
-      next: (p) => this.buyTicket(p.get('id')),
+      next: (p) => this.findStationFare(p.get('id')),
     });
   }
 
-  private buyTicket(ticketId: string | null) {
+  buyTicket() {
+    const stationFareTicket: StationFareTicketDto = {
+      ticketId: this.stationFareTicket.id,
+      username: this.username,
+      price: this.stationFareTicket.price,
+      from: this.stationFareTicket.from,
+      destination: this.stationFareTicket.destination,
+    };
+    console.log('buyticket info: ', stationFareTicket);
+
+    this.stationFareService
+      .buyStationFare({ body: stationFareTicket })
+      .subscribe({
+        next: () => console.log('succeeded ticket bought'),
+        error: this.handleError,
+      });
+    //this.toastr.success('You have successfully bought the ticket.');
+  }
+
+  private findStationFare(ticketId: string | null) {
     this.ticketId = ticketId ?? 'not passed';
 
-    this.stationFareService.buyStationFare({ id: this.ticketId }).subscribe({
+    this.stationFareService.findStationFare({ id: this.ticketId }).subscribe({
       next: (ticket) => (this.stationFareTicket = ticket),
       error: this.handleError,
     });
@@ -41,4 +67,12 @@ export class BuyTicketComponent implements OnInit {
     console.log('response status', err.status);
     console.log('response status text', err.statusText);
   };
+
+  private user() {
+    this.userService.currentUser$.subscribe((user) => {
+      if (user) {
+        this.username = user.username;
+      }
+    });
+  }
 }

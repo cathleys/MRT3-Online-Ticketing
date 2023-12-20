@@ -8,18 +8,18 @@ import { RequestBuilder } from '../../request-builder';
 
 import { StationFare } from '../../models/station-fare';
 
-export interface BuyStationFare$Plain$Params {
+export interface FindStationFare$Params {
   id: string;
 }
 
-export function buyStationFare$Plain(http: HttpClient, rootUrl: string, params: BuyStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
-  const rb = new RequestBuilder(rootUrl, buyStationFare$Plain.PATH, 'get');
+export function findStationFare(http: HttpClient, rootUrl: string, params: FindStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
+  const rb = new RequestBuilder(rootUrl, findStationFare.PATH, 'get');
   if (params) {
     rb.path('id', params.id, {});
   }
 
   return http.request(
-    rb.build({ responseType: 'text', accept: 'text/plain', context })
+    rb.build({ responseType: 'json', accept: 'text/json', context })
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
@@ -28,4 +28,4 @@ export function buyStationFare$Plain(http: HttpClient, rootUrl: string, params: 
   );
 }
 
-buyStationFare$Plain.PATH = '/api/StationFare/{id}';
+findStationFare.PATH = '/api/StationFare/{id}';
