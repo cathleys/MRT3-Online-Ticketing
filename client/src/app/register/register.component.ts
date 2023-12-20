@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../api/services';
 import { Router } from '@angular/router';
@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           this.router.navigateByUrl('/station-fare');
-          console.log(user);
         }
       },
       error: (error) => {

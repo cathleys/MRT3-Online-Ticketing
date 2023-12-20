@@ -2,7 +2,7 @@
 /* eslint-disable */
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BaseService } from '../base-service';
@@ -21,9 +21,6 @@ import { UserDto } from '../models/user-dto';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends BaseService {
-  private currentUserSource = new BehaviorSubject<UserDto | null>(null);
-  currentUser$ = this.currentUserSource.asObservable();
-
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
@@ -37,10 +34,7 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  registerAccount$Plain$Response(
-    params?: RegisterAccount$Plain$Params,
-    context?: HttpContext
-  ): Observable<StrictHttpResponse<UserDto>> {
+  registerAccount$Plain$Response(params?: RegisterAccount$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<UserDto>> {
     return registerAccount$Plain(this.http, this.rootUrl, params, context);
   }
 
@@ -50,10 +44,7 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  registerAccount$Plain(
-    params?: RegisterAccount$Plain$Params,
-    context?: HttpContext
-  ): Observable<UserDto> {
+  registerAccount$Plain(params?: RegisterAccount$Plain$Params, context?: HttpContext): Observable<UserDto> {
     return this.registerAccount$Plain$Response(params, context).pipe(
       map((r: StrictHttpResponse<UserDto>): UserDto => r.body)
     );
@@ -65,10 +56,7 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  registerAccount$Response(
-    params?: RegisterAccount$Params,
-    context?: HttpContext
-  ): Observable<StrictHttpResponse<UserDto>> {
+  registerAccount$Response(params?: RegisterAccount$Params, context?: HttpContext): Observable<StrictHttpResponse<UserDto>> {
     return registerAccount(this.http, this.rootUrl, params, context);
   }
 
@@ -78,10 +66,7 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  registerAccount(
-    params?: RegisterAccount$Params,
-    context?: HttpContext
-  ): Observable<UserDto> {
+  registerAccount(params?: RegisterAccount$Params, context?: HttpContext): Observable<UserDto> {
     return this.registerAccount$Response(params, context).pipe(
       map((r: StrictHttpResponse<UserDto>): UserDto => r.body)
     );
@@ -96,10 +81,7 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  loginAccount$Plain$Response(
-    params?: LoginAccount$Plain$Params,
-    context?: HttpContext
-  ): Observable<StrictHttpResponse<UserDto>> {
+  loginAccount$Plain$Response(params?: LoginAccount$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<UserDto>> {
     return loginAccount$Plain(this.http, this.rootUrl, params, context);
   }
 
@@ -109,10 +91,7 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  loginAccount$Plain(
-    params?: LoginAccount$Plain$Params,
-    context?: HttpContext
-  ): Observable<UserDto> {
+  loginAccount$Plain(params?: LoginAccount$Plain$Params, context?: HttpContext): Observable<UserDto> {
     return this.loginAccount$Plain$Response(params, context).pipe(
       map((r: StrictHttpResponse<UserDto>): UserDto => r.body)
     );
@@ -124,10 +103,7 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  loginAccount$Response(
-    params?: LoginAccount$Params,
-    context?: HttpContext
-  ): Observable<StrictHttpResponse<UserDto>> {
+  loginAccount$Response(params?: LoginAccount$Params, context?: HttpContext): Observable<StrictHttpResponse<UserDto>> {
     return loginAccount(this.http, this.rootUrl, params, context);
   }
 
@@ -137,21 +113,10 @@ export class AccountService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  loginAccount(
-    params?: LoginAccount$Params,
-    context?: HttpContext
-  ): Observable<UserDto> {
+  loginAccount(params?: LoginAccount$Params, context?: HttpContext): Observable<UserDto> {
     return this.loginAccount$Response(params, context).pipe(
       map((r: StrictHttpResponse<UserDto>): UserDto => r.body)
     );
   }
 
-  setCurrentUser(user: UserDto) {
-    this.currentUserSource.next(user);
-  }
-
-  logout() {
-    localStorage.removeItem('user');
-    this.currentUserSource.next(null);
-  }
 }

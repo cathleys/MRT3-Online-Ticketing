@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from './api/services';
 import { UserDto } from './api/models';
+import { UserService } from './_helpers/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { UserDto } from './api/models';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private accountService: AccountService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.setCurrentUser();
@@ -20,6 +19,6 @@ export class AppComponent implements OnInit {
     if (!userString) return;
 
     const user: UserDto = JSON.parse(userString);
-    this.accountService.setCurrentUser(user);
+    this.userService.setCurrentUser(user);
   }
 }

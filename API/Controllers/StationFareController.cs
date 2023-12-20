@@ -1,4 +1,5 @@
-﻿using API.Models;
+﻿using API.DTOs;
+using API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -7,10 +8,11 @@ namespace API.Controllers;
 public class StationFareController : BaseApiController
 {
 
+    private static IList<StationFareTicketDto> BuyTickets = new List<StationFareTicketDto>();
+
     [HttpGet]
     [ProducesResponseType(200)]
-    [ProducesResponseType(400)]
-    [ProducesResponseType(500)]
+
     public ActionResult<IEnumerable<StationFare>> Search()
     {
         var fares = new List<StationFare>
@@ -27,9 +29,8 @@ public class StationFareController : BaseApiController
     [HttpGet("{id}")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
-    [ProducesResponseType(400)]
-    [ProducesResponseType(500)]
-    public ActionResult<StationFare> Buy(string id)
+
+    public ActionResult<StationFare> Find(string id)
     {
         var fares = new List<StationFare>{
         new StationFare{Id="1", From="Ortigas", Destination="Q.Ave", Price="13"},
@@ -41,5 +42,14 @@ public class StationFareController : BaseApiController
         if (fare == null) return NotFound("stationfare not found");
 
         return Ok(fare);
+    }
+
+    [HttpPost("buy-ticket")]
+    [ProducesResponseType(200)]
+
+    public void Buy(StationFareTicketDto Dto)
+    {
+        BuyTickets.Add(Dto);
+        System.Diagnostics.Debug.WriteLine($"Buying a new ticket with {Dto.TicketId}");
     }
 }
