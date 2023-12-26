@@ -5,6 +5,7 @@ import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { authGuard } from './_guards/auth.guard';
+import { MyTicketsComponent } from './my-tickets/my-tickets.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -17,6 +18,11 @@ const routes: Routes = [
   {
     path: 'buy-ticket/:id',
     component: BuyTicketComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'my-tickets',
+    component: MyTicketsComponent,
     canActivate: [authGuard],
   },
   { path: '**', component: StationfareComponent, pathMatch: 'full' },

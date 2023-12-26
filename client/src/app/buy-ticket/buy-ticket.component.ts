@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StationFareService } from '../api/services';
-import { StationFare, StationFareTicketDto, UserDto } from '../api/models';
+import { StationFare, StationFareTicketDto } from '../api/models';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../_helpers/user.service';
-import { map } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-buy-ticket',
   templateUrl: './buy-ticket.component.html',
@@ -39,15 +40,17 @@ export class BuyTicketComponent implements OnInit {
       from: this.stationFareTicket.from,
       destination: this.stationFareTicket.destination,
     };
-    console.log('buyticket info: ', stationFareTicket);
 
     this.stationFareService
       .buyStationFare({ body: stationFareTicket })
       .subscribe({
-        next: () => console.log('succeeded ticket bought'),
+        next: () => {
+          console.log('buyticket info: ', stationFareTicket);
+          this.toastr.success('You have successfully bought the ticket.');
+          this.router.navigateByUrl('/my-tickets');
+        },
         error: this.handleError,
       });
-    //this.toastr.success('You have successfully bought the ticket.');
   }
 
   private findStationFare(ticketId: string | null) {

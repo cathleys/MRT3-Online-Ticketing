@@ -4,11 +4,9 @@ namespace API.DTOs;
 
 public class LoginDto
 {
-    public string Email { get; set; }
-
-    [Required]
+    [Required(ErrorMessage = "Username is required")]
     public string Username { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Password is required")]
     public string Password { get; set; }
 }
