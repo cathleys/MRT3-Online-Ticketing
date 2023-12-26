@@ -46,10 +46,16 @@ public class StationFareController : BaseApiController
 
     [HttpPost("buy-ticket")]
     [ProducesResponseType(200)]
+    [ProducesResponseType(404)]
 
-    public void Buy(StationFareTicketDto Dto)
+    public void Buy(StationFareTicketDto dto)
     {
-        BuyTickets.Add(Dto);
-        System.Diagnostics.Debug.WriteLine($"Buying a new ticket with {Dto.TicketId}");
+        // var ticket = BuyTickets.Any(t => t.TicketId == dto.TicketId);
+
+        // if (ticket is false) return NotFound();
+
+        BuyTickets.Add(dto);
+        System.Diagnostics.Debug.WriteLine($"Buying a new ticket with {dto.TicketId}");
+        // return NoContent()
     }
 }

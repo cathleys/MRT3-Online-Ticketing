@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SharedModule } from './_modules/shared.module';
+import { MyTicketsComponent } from './my-tickets/my-tickets.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SharedModule } from './_modules/shared.module';
     RegisterComponent,
     NavComponent,
     HomePageComponent,
+    MyTicketsComponent,
   ],
   imports: [
     BrowserModule,
