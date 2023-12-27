@@ -7,22 +7,31 @@ namespace API.Controllers;
 
 public class StationFareController : BaseApiController
 {
-
-    private static IList<StationFareTicketDto> BuyTickets = new List<StationFareTicketDto>();
+    private static IList<StationFare> stationFare = new List<StationFare>
+    {
+        new StationFare{Id="1", From="Ortigas", Destination="Q.Ave", Price="13"},
+        new StationFare{Id="2", From="Shaw Blvd.", Destination="North Ave", Price="13"},
+        new StationFare{Id="3", From="Taft Ave.", Destination="Q.Ave", Price="16"},
+    };
+    private static IList<StationFareTicket> stationFareTicket = new List<StationFareTicket>();
 
     [HttpGet]
     [ProducesResponseType(200)]
 
-    public ActionResult<IEnumerable<StationFare>> Search()
+    public ActionResult<IEnumerable<StationFareDto>> Search()
     {
-        var fares = new List<StationFare>
+        var fares = stationFare.Select(fare =>
+        new StationFareDto
         {
-        new StationFare{Id="1", From="Ortigas", Destination="Q.Ave", Price="13"},
-        new StationFare{Id="2", From="Shaw Blvd.", Destination="North Ave", Price="13"},
-        new StationFare{Id="3", From="Taft Ave.", Destination="Q.Ave", Price="16"},
-        };
+            Id = fare.Id,
+            Price = fare.Price,
+            From = fare.From,
+            Destination = fare.Destination
+        });
 
-        return Ok(fares.ToList());
+
+
+        return Ok(fares);
     }
 
 
@@ -30,32 +39,43 @@ public class StationFareController : BaseApiController
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
 
-    public ActionResult<StationFare> Find(string id)
+    public ActionResult<StationFareDto> Find(string id)
     {
-        var fares = new List<StationFare>{
-        new StationFare{Id="1", From="Ortigas", Destination="Q.Ave", Price="13"},
-        new StationFare{Id="2", From="Shaw Blvd.", Destination="North Ave", Price="13"},
-        new StationFare{Id="3", From="Taft Ave.", Destination="Q.Ave", Price="16"},
-    };
-        var fare = fares.FirstOrDefault(f => f.Id == id);
+
+        var fare = stationFare.FirstOrDefault(f => f.Id == id);
 
         if (fare == null) return NotFound("stationfare not found");
 
-        return Ok(fare);
+        var fareDto = new StationFareDto
+        {
+            Id = fare.Id,
+            Price = fare.Price,
+            From = fare.From,
+            Destination = fare.Destination
+        };
+        return Ok(fareDto);
     }
 
     [HttpPost("buy-ticket")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
 
-    public void Buy(StationFareTicketDto dto)
+    public ActionResult<StationFareTicket> Buy(StationFareTicketDto dto)
     {
-        // var ticket = BuyTickets.Any(t => t.TicketId == dto.TicketId);
+        var ticket = stationFare.Any(t => t.Id == dto.TicketId);
 
-        // if (ticket is false) return NotFound();
+        if (ticket == false) return NotFound();
 
-        BuyTickets.Add(dto);
+        var sf = new StationFareTicket
+        {
+            TicketId = dto.TicketId,
+            Username = dto.Username,
+            Price = dto.Price,
+            From = dto.From,
+            Destination = dto.Destination
+        };
+        stationFareTicket.Add(sf);
         System.Diagnostics.Debug.WriteLine($"Buying a new ticket with {dto.TicketId}");
-        // return NoContent()
+        return NoContent();
     }
 }

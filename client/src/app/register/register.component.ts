@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Self } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgControl,
+  Validators,
+} from '@angular/forms';
 import { AccountService } from '../api/services';
 import { Router } from '@angular/router';
 import { UserDto } from '../api/models';
@@ -48,6 +54,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    if (this.registerForm.invalid) return;
+
     const values = { ...this.registerForm.value };
 
     this.accountService.registerAccount({ body: values }).subscribe({
