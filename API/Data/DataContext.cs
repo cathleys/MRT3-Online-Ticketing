@@ -1,4 +1,5 @@
-﻿using API.Models;
+﻿using API.DTOs;
+using API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data;
