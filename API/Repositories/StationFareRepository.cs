@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Interfaces;
 using API.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories;
@@ -14,21 +15,11 @@ public class StationFareRepository : IStationFareRepository
         _context = context;
     }
 
-    public async Task<bool> Add(StationFare stationFare)
-    {
-        _context.Add(stationFare);
-        return await Save();
-    }
-
-    public async Task<bool> Delete(StationFare stationFare)
-    {
-        _context.Remove(stationFare);
-        return await Save();
-    }
 
     public async Task<IEnumerable<StationFare>> GetStationFare()
     {
-        return await _context.StationFares.ToListAsync();
+        return await _context.StationFares
+        .ToListAsync();
 
     }
 
@@ -38,6 +29,7 @@ public class StationFareRepository : IStationFareRepository
         return await _context.StationFares
         .FirstOrDefaultAsync(sf => sf.Id == id);
     }
+
 
     public async Task<bool> Save()
     {
