@@ -1,25 +1,23 @@
-﻿using API.DTOs;
+﻿
+using API.DTOs;
 using API.Interfaces;
 using API.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 
-//[Authorize]
+
 public class StationFareController : BaseApiController
 {
     private readonly IStationFareRepository _stationFareRepository;
-    private readonly ITicketingRepository _ticketingRepository;
 
     public StationFareController(
-    IStationFareRepository stationFareRepository,
-    ITicketingRepository ticketingRepository
+    IStationFareRepository stationFareRepository
 )
     {
         _stationFareRepository = stationFareRepository;
-        _ticketingRepository = ticketingRepository;
+
     }
 
     [HttpGet]
@@ -53,7 +51,7 @@ public class StationFareController : BaseApiController
     }
 
     [HttpPost("buy-ticket")]
-    [ProducesResponseType(204)]
+    [ProducesResponseType(201)]
     [ProducesResponseType(404)]
 
     public async Task<ActionResult> Buy(StationFareTicketDto dto)
@@ -62,31 +60,37 @@ public class StationFareController : BaseApiController
 
         if (fare == null) return NotFound("station fare does not exist");
 
+        var ticketing = new Ticketing
+        {
+            Username = dto.Username,
+            StationFareId = fare.Id,
+            StationFare = fare
+        };
+
+        fare.Ticketing.Add(ticketing);
         try
         {
-            var ticketing = new Ticketing
-            {
-                Username = dto.Username,
-                StationFareId = fare.Id,
-                StationFare = fare
-            };
-
-            fare.Ticketing.Add(ticketing);
 
             if (await _stationFareRepository.Save())
             {
                 System.Diagnostics.Debug.WriteLine($"Buying a new ticket with {dto.Id}, same with {fare.Id}");
-                return NoContent();
+
+                // Return CreatedAtAction with the dynamically generated URL
+                return Created(Url.Action(nameof(Find), new { id = fare.Id }), null);
+
             }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Save operation returned false.");
-                return BadRequest("Error while saving ticketing");
-            }
+            return BadRequest("Problem saving ticket");
+
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Exception during Buy operation: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Exception during Buy operation: {ex}");
+
+            while (ex.InnerException != null)
+            {
+                System.Diagnostics.Debug.WriteLine($"Inner Exception: {ex.InnerException}");
+            }
+
             return BadRequest($"Error while processing the request: {ex.Message}");
         }
 

@@ -18,7 +18,6 @@ public class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Ticketing>().HasKey(a => a.Username);
 
         modelBuilder.Entity<StationFare>()
         .HasMany(sf => sf.Ticketing)
