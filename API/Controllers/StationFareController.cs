@@ -1,37 +1,31 @@
-﻿using API.DTOs;
+﻿
+using API.DTOs;
+using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 
+
 public class StationFareController : BaseApiController
 {
-    private static IList<StationFare> stationFare = new List<StationFare>
+    private readonly IStationFareRepository _stationFareRepository;
+
+    public StationFareController(
+    IStationFareRepository stationFareRepository
+)
     {
-        new StationFare{Id="1", From="Ortigas", Destination="Q.Ave", Price="13"},
-        new StationFare{Id="2", From="Shaw Blvd.", Destination="North Ave", Price="13"},
-        new StationFare{Id="3", From="Taft Ave.", Destination="Q.Ave", Price="16"},
-    };
-    private static IList<StationFareTicket> stationFareTicket = new List<StationFareTicket>();
+        _stationFareRepository = stationFareRepository;
+
+    }
 
     [HttpGet]
     [ProducesResponseType(200)]
 
-    public ActionResult<IEnumerable<StationFareDto>> Search()
+    public async Task<ActionResult<IEnumerable<StationFareDto>>> Search()
     {
-        var fares = stationFare.Select(fare =>
-        new StationFareDto
-        {
-            Id = fare.Id,
-            Price = fare.Price,
-            From = fare.From,
-            Destination = fare.Destination
-        });
-
-
-
-        return Ok(fares);
+        return Ok(await _stationFareRepository.GetStationFare());
     }
 
 
@@ -39,12 +33,12 @@ public class StationFareController : BaseApiController
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
 
-    public ActionResult<StationFareDto> Find(string id)
+    public async Task<ActionResult<StationFareDto>> Find(string id)
     {
 
-        var fare = stationFare.FirstOrDefault(f => f.Id == id);
+        var fare = await _stationFareRepository.GetStationFareById(id);
 
-        if (fare == null) return NotFound("stationfare not found");
+        if (fare == null) return NotFound("station fare not found");
 
         var fareDto = new StationFareDto
         {
@@ -57,25 +51,50 @@ public class StationFareController : BaseApiController
     }
 
     [HttpPost("buy-ticket")]
-    [ProducesResponseType(200)]
+    [ProducesResponseType(201)]
     [ProducesResponseType(404)]
 
-    public ActionResult<StationFareTicket> Buy(StationFareTicketDto dto)
+    public async Task<ActionResult> Buy(StationFareTicketDto dto)
     {
-        var ticket = stationFare.Any(t => t.Id == dto.TicketId);
+        var fare = await _stationFareRepository.GetStationFareById(dto.Id);
 
-        if (ticket == false) return NotFound();
+        if (fare == null) return NotFound("station fare does not exist");
 
-        var sf = new StationFareTicket
+        var ticketing = new Ticketing
         {
-            TicketId = dto.TicketId,
             Username = dto.Username,
-            Price = dto.Price,
-            From = dto.From,
-            Destination = dto.Destination
+            StationFareId = fare.Id,
+            StationFare = fare
         };
-        stationFareTicket.Add(sf);
-        System.Diagnostics.Debug.WriteLine($"Buying a new ticket with {dto.TicketId}");
-        return NoContent();
+
+        fare.Ticketing.Add(ticketing);
+        try
+        {
+
+            if (await _stationFareRepository.Save())
+            {
+                System.Diagnostics.Debug.WriteLine($"Buying a new ticket with {dto.Id}, same with {fare.Id}");
+
+                // Return CreatedAtAction with the dynamically generated URL
+                return Created(Url.Action(nameof(Find), new { id = fare.Id }), null);
+
+            }
+            return BadRequest("Problem saving ticket");
+
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Exception during Buy operation: {ex}");
+
+            while (ex.InnerException != null)
+            {
+                System.Diagnostics.Debug.WriteLine($"Inner Exception: {ex.InnerException}");
+            }
+
+            return BadRequest($"Error while processing the request: {ex.Message}");
+        }
+
+
     }
+
 }

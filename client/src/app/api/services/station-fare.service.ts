@@ -19,7 +19,7 @@ import { searchStationFare } from '../fn/station-fare/search-station-fare';
 import { SearchStationFare$Params } from '../fn/station-fare/search-station-fare';
 import { searchStationFare$Plain } from '../fn/station-fare/search-station-fare-plain';
 import { SearchStationFare$Plain$Params } from '../fn/station-fare/search-station-fare-plain';
-import { StationFare } from '../models/station-fare';
+import { StationFareDto } from '../models/station-fare-dto';
 
 @Injectable({ providedIn: 'root' })
 export class StationFareService extends BaseService {
@@ -36,7 +36,7 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  searchStationFare$Plain$Response(params?: SearchStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<StationFare>>> {
+  searchStationFare$Plain$Response(params?: SearchStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<StationFareDto>>> {
     return searchStationFare$Plain(this.http, this.rootUrl, params, context);
   }
 
@@ -46,9 +46,9 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  searchStationFare$Plain(params?: SearchStationFare$Plain$Params, context?: HttpContext): Observable<Array<StationFare>> {
+  searchStationFare$Plain(params?: SearchStationFare$Plain$Params, context?: HttpContext): Observable<Array<StationFareDto>> {
     return this.searchStationFare$Plain$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<StationFare>>): Array<StationFare> => r.body)
+      map((r: StrictHttpResponse<Array<StationFareDto>>): Array<StationFareDto> => r.body)
     );
   }
 
@@ -58,7 +58,7 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  searchStationFare$Response(params?: SearchStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<StationFare>>> {
+  searchStationFare$Response(params?: SearchStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<StationFareDto>>> {
     return searchStationFare(this.http, this.rootUrl, params, context);
   }
 
@@ -68,9 +68,9 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  searchStationFare(params?: SearchStationFare$Params, context?: HttpContext): Observable<Array<StationFare>> {
+  searchStationFare(params?: SearchStationFare$Params, context?: HttpContext): Observable<Array<StationFareDto>> {
     return this.searchStationFare$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<StationFare>>): Array<StationFare> => r.body)
+      map((r: StrictHttpResponse<Array<StationFareDto>>): Array<StationFareDto> => r.body)
     );
   }
 
@@ -83,7 +83,7 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findStationFare$Plain$Response(params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
+  findStationFare$Plain$Response(params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFareDto>> {
     return findStationFare$Plain(this.http, this.rootUrl, params, context);
   }
 
@@ -93,9 +93,9 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findStationFare$Plain(params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StationFare> {
+  findStationFare$Plain(params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StationFareDto> {
     return this.findStationFare$Plain$Response(params, context).pipe(
-      map((r: StrictHttpResponse<StationFare>): StationFare => r.body)
+      map((r: StrictHttpResponse<StationFareDto>): StationFareDto => r.body)
     );
   }
 
@@ -105,7 +105,7 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findStationFare$Response(params: FindStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
+  findStationFare$Response(params: FindStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFareDto>> {
     return findStationFare(this.http, this.rootUrl, params, context);
   }
 
@@ -115,9 +115,9 @@ export class StationFareService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findStationFare(params: FindStationFare$Params, context?: HttpContext): Observable<StationFare> {
+  findStationFare(params: FindStationFare$Params, context?: HttpContext): Observable<StationFareDto> {
     return this.findStationFare$Response(params, context).pipe(
-      map((r: StrictHttpResponse<StationFare>): StationFare => r.body)
+      map((r: StrictHttpResponse<StationFareDto>): StationFareDto => r.body)
     );
   }
 

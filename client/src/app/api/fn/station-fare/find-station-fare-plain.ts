@@ -6,13 +6,13 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { StationFare } from '../../models/station-fare';
+import { StationFareDto } from '../../models/station-fare-dto';
 
 export interface FindStationFare$Plain$Params {
   id: string;
 }
 
-export function findStationFare$Plain(http: HttpClient, rootUrl: string, params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFare>> {
+export function findStationFare$Plain(http: HttpClient, rootUrl: string, params: FindStationFare$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StationFareDto>> {
   const rb = new RequestBuilder(rootUrl, findStationFare$Plain.PATH, 'get');
   if (params) {
     rb.path('id', params.id, {});
@@ -23,7 +23,7 @@ export function findStationFare$Plain(http: HttpClient, rootUrl: string, params:
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<StationFare>;
+      return r as StrictHttpResponse<StationFareDto>;
     })
   );
 }

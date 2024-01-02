@@ -1,0 +1,789 @@
+﻿[
+  {
+    "Price": "13",
+    "From": "North Ave.",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "13",
+    "From": "North Ave.",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "16",
+    "From": "North Ave.",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "16",
+    "From": "North Ave.",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "20",
+    "From": "North Ave.",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "20",
+    "From": "North Ave.",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "20",
+    "From": "North Ave.",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "24",
+    "From": "North Ave.",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "24",
+    "From": "North Ave.",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "24",
+    "From": "North Ave.",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "28",
+    "From": "North Ave.",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "28",
+    "From": "North Ave.",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "13",
+    "From": "Quezon Ave.",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "13",
+    "From": "Quezon Ave.",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "13",
+    "From": "Quezon Ave.",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "16",
+    "From": "Quezon Ave.",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "16",
+    "From": "Quezon Ave.",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "20",
+    "From": "Quezon Ave.",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "20",
+    "From": "Quezon Ave.",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "20",
+    "From": "Quezon Ave.",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "24",
+    "From": "Quezon Ave.",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "24",
+    "From": "Quezon Ave.",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "24",
+    "From": "Quezon Ave.",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "28",
+    "From": "Quezon Ave.",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "13",
+    "From": "GMA Kamuning",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "13",
+    "From": "GMA Kamuning",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "13",
+    "From": "GMA Kamuning",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "13",
+    "From": "GMA Kamuning",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "16",
+    "From": "GMA Kamuning",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "16",
+    "From": "GMA Kamuning",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "20",
+    "From": "GMA Kamuning",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "20",
+    "From": "GMA Kamuning",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "20",
+    "From": "GMA Kamuning",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "24",
+    "From": "GMA Kamuning",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "24",
+    "From": "GMA Kamuning",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "24",
+    "From": "GMA Kamuning",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "16",
+    "From": "Araneta Cubao",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "13",
+    "From": "Araneta Cubao",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "13",
+    "From": "Araneta Cubao",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "13",
+    "From": "Araneta Cubao",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "13",
+    "From": "Araneta Cubao",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "16",
+    "From": "Araneta Cubao",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "16",
+    "From": "Araneta Cubao",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "20",
+    "From": "Araneta Cubao",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "20",
+    "From": "Araneta Cubao",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "20",
+    "From": "Araneta Cubao",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "24",
+    "From": "Araneta Cubao",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "24",
+    "From": "Araneta Cubao",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "16",
+    "From": "Santolan Annapolis",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "16",
+    "From": "Santolan Annapolis",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "13",
+    "From": "Santolan Annapolis",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "13",
+    "From": "Santolan Annapolis",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "13",
+    "From": "Santolan Annapolis",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "13",
+    "From": "Santolan Annapolis",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "16",
+    "From": "Santolan Annapolis",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "16",
+    "From": "Santolan Annapolis",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "20",
+    "From": "Santolan Annapolis",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "20",
+    "From": "Santolan Annapolis",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "20",
+    "From": "Santolan Annapolis",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "24",
+    "From": "Santolan Annapolis",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "20",
+    "From": "Ortigas",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "16",
+    "From": "Ortigas",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "16",
+    "From": "Ortigas",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "13",
+    "From": "Ortigas",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "13",
+    "From": "Ortigas",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "13",
+    "From": "Ortigas",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "13",
+    "From": "Ortigas",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "16",
+    "From": "Ortigas",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "16",
+    "From": "Ortigas",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "20",
+    "From": "Ortigas",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "20",
+    "From": "Ortigas",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "20",
+    "From": "Ortigas",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "20",
+    "From": "Shaw Blvd.",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "20",
+    "From": "Shaw Blvd.",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "16",
+    "From": "Shaw Blvd.",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "16",
+    "From": "Shaw Blvd.",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "13",
+    "From": "Shaw Blvd.",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "13",
+    "From": "Shaw Blvd.",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "13",
+    "From": "Shaw Blvd.",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "13",
+    "From": "Shaw Blvd.",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "16",
+    "From": "Shaw Blvd.",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "16",
+    "From": "Shaw Blvd.",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "20",
+    "From": "Shaw Blvd.",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "20",
+    "From": "Shaw Blvd.",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "20",
+    "From": "Boni",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "20",
+    "From": "Boni",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "20",
+    "From": "Boni",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "16",
+    "From": "Boni",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "16",
+    "From": "Boni",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "13",
+    "From": "Boni",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "13",
+    "From": "Boni",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "13",
+    "From": "Boni",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "13",
+    "From": "Boni",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "16",
+    "From": "Boni",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "16",
+    "From": "Boni",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "20",
+    "From": "Boni",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "24",
+    "From": "Guadalupe",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "20",
+    "From": "Guadalupe",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "20",
+    "From": "Guadalupe",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "20",
+    "From": "Guadalupe",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "16",
+    "From": "Guadalupe",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "16",
+    "From": "Guadalupe",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "13",
+    "From": "Guadalupe",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "13",
+    "From": "Guadalupe",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "13",
+    "From": "Guadalupe",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "13",
+    "From": "Guadalupe",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "16",
+    "From": "Guadalupe",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "16",
+    "From": "Guadalupe",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "24",
+    "From": "Buendia",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "24",
+    "From": "Buendia",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "20",
+    "From": "Buendia",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "20",
+    "From": "Buendia",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "20",
+    "From": "Buendia",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "16",
+    "From": "Buendia",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "16",
+    "From": "Buendia",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "13",
+    "From": "Buendia",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "13",
+    "From": "Buendia",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "13",
+    "From": "Buendia",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "13",
+    "From": "Buendia",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "16",
+    "From": "Buendia",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "24",
+    "From": "Ayala",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "24",
+    "From": "Ayala",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "24",
+    "From": "Ayala",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "20",
+    "From": "Ayala",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "20",
+    "From": "Ayala",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "20",
+    "From": "Ayala",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "16",
+    "From": "Ayala",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "16",
+    "From": "Ayala",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "13",
+    "From": "Ayala",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "13",
+    "From": "Ayala",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "13",
+    "From": "Ayala",
+    "Destination": "Magallanes"
+  },
+  {
+    "Price": "13",
+    "From": "Ayala",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "28",
+    "From": "Magallanes",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "24",
+    "From": "Magallanes",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "24",
+    "From": "Magallanes",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "24",
+    "From": "Magallanes",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "20",
+    "From": "Magallanes",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "20",
+    "From": "Magallanes",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "20",
+    "From": "Magallanes",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "16",
+    "From": "Magallanes",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "16",
+    "From": "Magallanes",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "13",
+    "From": "Magallanes",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "13",
+    "From": "Magallanes",
+    "Destination": "Ayala"
+  },
+  {
+    "Price": "13",
+    "From": "Magallanes",
+    "Destination": "Taft Ave."
+  },
+
+  {
+    "Price": "28",
+    "From": "Taft Ave.",
+    "Destination": "North Ave."
+  },
+  {
+    "Price": "28",
+    "From": "Taft Ave.",
+    "Destination": "Quezon Ave."
+  },
+  {
+    "Price": "24",
+    "From": "Taft Ave.",
+    "Destination": "GMA Kamuning"
+  },
+  {
+    "Price": "24",
+    "From": "Taft Ave.",
+    "Destination": "Araneta Cubao"
+  },
+  {
+    "Price": "24",
+    "From": "Taft Ave.",
+    "Destination": "Santolan Annapolis"
+  },
+  {
+    "Price": "20",
+    "From": "Taft Ave.",
+    "Destination": "Ortigas"
+  },
+  {
+    "Price": "20",
+    "From": "Taft Ave.",
+    "Destination": "Shaw Blvd."
+  },
+  {
+    "Price": "20",
+    "From": "Taft Ave.",
+    "Destination": "Boni"
+  },
+  {
+    "Price": "16",
+    "From": "Taft Ave.",
+    "Destination": "Guadalupe"
+  },
+  {
+    "Price": "16",
+    "From": "Taft Ave.",
+    "Destination": "Buendia"
+  },
+  {
+    "Price": "13",
+    "From": "Taft Ave.",
+    "Destination": "Magallanes"
+  }
+]
