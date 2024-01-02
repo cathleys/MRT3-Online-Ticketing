@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StationFareService } from '../api/services';
-import { StationFare, StationFareTicketDto } from '../api/models';
+import { StationFareDto, StationFareTicketDto } from '../api/models';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../_helpers/user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class BuyTicketComponent implements OnInit {
   ticketId: string = 'not loaded';
-  stationFareTicket: StationFare = {};
+  stationFare: StationFareDto = {};
   username: string | null | undefined;
 
   constructor(
@@ -34,18 +34,14 @@ export class BuyTicketComponent implements OnInit {
 
   buyTicket() {
     const stationFareTicket: StationFareTicketDto = {
-      ticketId: this.stationFareTicket.id,
+      id: this.ticketId,
       username: this.username,
-      price: this.stationFareTicket.price,
-      from: this.stationFareTicket.from,
-      destination: this.stationFareTicket.destination,
     };
 
     this.stationFareService
       .buyStationFare({ body: stationFareTicket })
       .subscribe({
         next: () => {
-          console.log('buyticket info: ', stationFareTicket);
           this.toastr.success('You have successfully bought the ticket.');
           this.router.navigateByUrl('/my-tickets');
         },
@@ -57,7 +53,7 @@ export class BuyTicketComponent implements OnInit {
     this.ticketId = ticketId ?? 'not passed';
 
     this.stationFareService.findStationFare({ id: this.ticketId }).subscribe({
-      next: (ticket) => (this.stationFareTicket = ticket),
+      next: (ticket) => (this.stationFare = ticket),
       error: this.handleError,
     });
   }

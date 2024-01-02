@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StationFareService } from '../api/services';
-import { StationFare } from '../api/models';
+import { StationFareDto } from '../api/models';
 
 @Component({
   selector: 'app-stationfare',
@@ -8,7 +8,7 @@ import { StationFare } from '../api/models';
   styleUrls: ['./stationfare.component.css'],
 })
 export class StationfareComponent implements OnInit {
-  fares: StationFare[] = [];
+  fares: StationFareDto[] = [];
   constructor(private stationFareService: StationFareService) {}
 
   ngOnInit(): void {}
