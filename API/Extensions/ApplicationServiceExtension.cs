@@ -21,6 +21,7 @@ public static class ApplicationServiceExtension
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IStationFareRepository, StationFareRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ITicketingRepository, TicketingRepository>();
 
 
         return services;
