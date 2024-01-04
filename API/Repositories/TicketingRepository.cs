@@ -14,7 +14,7 @@ public class TicketingRepository : ITicketingRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Ticketing>> MyTicketing()
+    public Task<IEnumerable<Ticketing>> MyTicketing()
     {
         throw new NotImplementedException();
     }

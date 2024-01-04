@@ -1,5 +1,7 @@
 ﻿using API.Data;
 using API.Interfaces;
+using API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories;
 
@@ -22,6 +24,11 @@ public class UserRepository : IUserRepository
     {
         return await _context.Users.FindAsync(userId);
 
+    }
+
+    public async Task<AppUser> GetUserByUsername(string username)
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
     }
 
     public async Task<bool> Save()

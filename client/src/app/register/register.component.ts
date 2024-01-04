@@ -62,8 +62,8 @@ export class RegisterComponent implements OnInit {
       next: (user: UserDto) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
-          this.router.navigateByUrl('/station-fare');
         }
+        this.router.navigateByUrl('/station-fare');
       },
       error: (error) => {
         this.toastr.error(error.error);

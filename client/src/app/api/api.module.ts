@@ -6,6 +6,7 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { AccountService } from './services/account.service';
 import { StationFareService } from './services/station-fare.service';
+import { TicketingService } from './services/ticketing.service';
 
 /**
  * Module that provides all services and configuration.
@@ -17,6 +18,7 @@ import { StationFareService } from './services/station-fare.service';
   providers: [
     AccountService,
     StationFareService,
+    TicketingService,
     ApiConfiguration
   ],
 })
