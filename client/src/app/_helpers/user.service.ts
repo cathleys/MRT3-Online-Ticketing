@@ -15,7 +15,6 @@ export class UserService {
   }
   loginUser(user: UserDto) {
     this.user = user;
-    console.log('user service:', user);
   }
 
   logout() {

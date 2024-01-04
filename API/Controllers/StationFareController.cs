@@ -1,5 +1,6 @@
 ﻿
 using API.DTOs;
+using API.Helpers;
 using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +23,21 @@ public class StationFareController : BaseApiController
     [HttpGet]
     [ProducesResponseType(200)]
 
-    public async Task<ActionResult<IEnumerable<StationFareDto>>> Search()
+    public async Task<ActionResult<IEnumerable<StationFareDto>>> Search(
+        [FromQuery] FareSearchParam fsSearchParam)
     {
-        return Ok(await _stationFareRepository.GetStationFare());
+        var stationfareList = await _stationFareRepository.GetStationFare(fsSearchParam);
+
+        var fareDtos = stationfareList.Select(fare =>
+        new StationFareDto
+        {
+            Id = fare.Id,
+            Price = fare.Price,
+            From = fare.From,
+            Destination = fare.Destination
+        });
+
+        return Ok(fareDtos);
     }
 
 

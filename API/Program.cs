@@ -17,6 +17,7 @@ builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(s =>
 {
+    s.DescribeAllParametersInCamelCase();
     s.AddServer(new OpenApiServer
     {
         Description = "Development Server",

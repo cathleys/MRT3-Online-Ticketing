@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StationFareService } from '../api/services';
 import { StationFareDto } from '../api/models';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-stationfare',
@@ -9,12 +10,28 @@ import { StationFareDto } from '../api/models';
 })
 export class StationfareComponent implements OnInit {
   fares: StationFareDto[] = [];
-  constructor(private stationFareService: StationFareService) {}
+  searchForm: FormGroup = new FormGroup({});
 
-  ngOnInit(): void {}
+  constructor(
+    private stationFareService: StationFareService,
+    private fb: FormBuilder
+  ) {}
 
-  search() {
-    this.stationFareService.searchStationFare().subscribe({
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.searchForm = this.fb.group({
+      from: [''],
+      destination: [''],
+    });
+  }
+
+  searchStationFare() {
+    const values = { ...this.searchForm.value };
+
+    this.stationFareService.searchStationFare(values).subscribe({
       next: (response) => (this.fares = response),
       error: (err) => console.log(err),
     });

@@ -9,11 +9,15 @@ import { RequestBuilder } from '../../request-builder';
 import { StationFareDto } from '../../models/station-fare-dto';
 
 export interface SearchStationFare$Params {
+  from?: string;
+  destination?: string;
 }
 
 export function searchStationFare(http: HttpClient, rootUrl: string, params?: SearchStationFare$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<StationFareDto>>> {
   const rb = new RequestBuilder(rootUrl, searchStationFare.PATH, 'get');
   if (params) {
+    rb.query('from', params.from, {});
+    rb.query('destination', params.destination, {});
   }
 
   return http.request(

@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Helpers;
 using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -16,10 +17,21 @@ public class StationFareRepository : IStationFareRepository
     }
 
 
-    public async Task<IEnumerable<StationFare>> GetStationFare()
+    public async Task<IEnumerable<StationFare>> GetStationFare(FareSearchParam fsSearchParam)
     {
-        return await _context.StationFares
-        .ToListAsync();
+        var query = _context.StationFares.AsQueryable();
+
+        if (!string.IsNullOrEmpty(fsSearchParam.From))
+        {
+            query = query.Where(f => f.From.Contains(fsSearchParam.From));
+        }
+
+        if (!string.IsNullOrEmpty(fsSearchParam.Destination))
+        {
+            query = query.Where(f => f.Destination.Contains(fsSearchParam.Destination));
+        }
+
+        return await query.ToListAsync();
 
     }
 

@@ -40,10 +40,6 @@ export class NavComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(user));
           this.userService.setCurrentUser(user);
           this.userService.loginUser(this.loginForm.get('username')?.value);
-          console.log(
-            'login value in nav:',
-            this.loginForm.get('username')?.value
-          );
 
           this.router.navigateByUrl('/station-fare');
         }
