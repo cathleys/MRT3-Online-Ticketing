@@ -1,11 +1,9 @@
-﻿namespace API;
+﻿using Microsoft.AspNetCore.Identity;
 
-public class AppUser
+namespace API.Models;
+
+public class AppUser : IdentityUser
 {
-    public int Id { get; set; }
-    public string Email { get; set; }
-    public string Username { get; set; }
-    public byte[] PasswordHash { get; set; }
-    public byte[] PasswordSalt { get; set; }
+    public List<Ticketing> MyProperty { get; set; } = new List<Ticketing>();
 
 }
